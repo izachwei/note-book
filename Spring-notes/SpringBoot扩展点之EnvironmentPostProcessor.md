@@ -6,9 +6,8 @@
 
 * 在 classpath:META-INF/spring.factories 中定义 org.springframework.boot.env.EnvironmentPostProcessor=类全路径
 
-使用场景
-
-
+### 使用场景
+* 刷新系统配置信息
 
 ### 原理
 
