@@ -18,3 +18,34 @@ propagation_never（xml文件中为never)	表示当方法务不应该在一个�
 propagation_requires_new(xml文件中为requires_new）	表示当前方法必须运行在它自己的事务中。一个新的事务将启动，而且如果有一个现有的事务在运行的话，则这个方法将在运行期被挂起，直到新的事务提交或者回滚才恢复执行
 propagation_not_supported（xml文件中为not_supported）	表示该方法不应该在一个事务中运行。如果有一个事务正在运行，它将在运行期被挂起，直到这个事务提交或者回滚才恢复执行
 ```
+
+## TransactionSynchronizationManager（事务信息的管理器，用于实现事务传播行为）
+
+Spring嵌套事务依赖Spring实现事务挂起功能（`suspend()`）底层实现：（事务的执行过程，无论是嵌套还是其他的事务传播行为，都是同一个线程因此需要事务的挂起）
+
+其实就是将线程变量里面的事务信息拿出来，再置空。 待事务提交或回滚后再放回线程变量中  
+
+TransactionSynchronizationManager 中的事务信息拿出来，存放在 SuspendedResourceHolder，等嵌套事务执行完，在将其放回 TransactionSynchronizationManager 
+
+### 嵌套事务还有一个特性，外层事务影响内层事务，内层不会影响外层，怎么实现？
+
+利用 JDBC  **Savepoint**，JDBC Savepoint帮我们在事务中创建检查点（checkpoint），这样就可以回滚到指定点
+
+### tip
+
+#### Spring 引入事务：
+* starter
+```XML
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-jdbc</artifactId>
+</dependency>
+```
+
+* jar
+```XML
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-tx</artifactId>
+</dependency>
+```
