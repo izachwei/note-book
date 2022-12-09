@@ -2,6 +2,14 @@
 
 JavaAgent 又称 Java 探针，是在 JDK5 引进的一种动态修改字节码的技术。它在 JVM 在加载字节码之前，获取字节码信息 通过字节码转换器修改字节码来实现一些额外的功能。JavaAgent本质可以理解成一个Jar包插件，使用 JVMTI（JVM Tool Interface）完成加载，利用 JVM 提供的 `Instrumentatiion` 接口来实现字节码加载前、加载后的修改。-javaagent 参数来指定一个 agent jar包，实现启动jvm时加载 agent。利用这一特性可以实现虚拟机级别的 AOP ，实时监控、分析虚拟机，干预虚拟机的执行。
 
+#### Instrumentation（核心）JDK 官方提供
+
+提供了注入字节码转换器的入口
+
+#### ClassFileTransformer
+
+字节码转换器接口，想要对字节码的转换需要实现该接口
+
 ### Java 能做什么？
 
 * 在 JVM 加载字节码之前对字节码修改
