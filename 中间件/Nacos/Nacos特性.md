@@ -11,10 +11,19 @@
   ExternalDataSourceServiceImpl
   ```
 
-### 监控数据指标
-
-* `NacosMeterRegistryCenter `  基于 `CompositeMeterRegistry` （micrometer）实现
-
 ## Auth 模块
 
 * AuthFilter 实现接口的权限验证，注解 @Secued
+
+## Core 模块
+
+* `RequestHandlerRegistry` 注册定义的容器中的 `RequestHandler`
+
+##### 监控数据指标
+
+* `NacosMeterRegistryCenter `  基于 `CompositeMeterRegistry` （micrometer）实现
+
+## Console 模块
+
+* 用于管理nacos，监控，展示Namespace、服务状况
+
