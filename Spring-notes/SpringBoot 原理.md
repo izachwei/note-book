@@ -35,7 +35,7 @@
 
 SpringBoot不需要写配置文件的原因是，SpringBoot所有配置都是在启动的时候进行扫描并加载，SpringBoot的所有自动配置类都在Spring.factories里面，但是不一定会生效，生效前要判断条件是否成立，只要导入了对应的start，就有对应的启动器，有了启动器就能帮我们进行自动配置类。
 
-### **总结
+### 总结
 
 1、注解@SpringBootApplication中含有三个注解，其中@EnabelAutoConfiguration和自动配置有关；
 
