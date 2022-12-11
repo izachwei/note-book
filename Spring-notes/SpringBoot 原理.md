@@ -1,4 +1,18 @@
-## SpringBoot 自动装配原理
+# SpringBoot 原理
+## SpringBoot启动流程
+1. 创建 SpringApplication ：读取 spring.facories 中的 ApplicationContextInitializer、ApplicationListener、判断 Web容器类型（webflux、servlet）
+2. 执行 Run 方法
+3. 读取 环境配置信息、命令行参数
+4. 创建对应的ServletWebServerApplicationContext
+5. 预初始化 context：读取配置类
+6. 调用refresh加载 context（ioc容器）
+> 6.1 加载所有自动配置类 （@SpringBootApplication、@EableAutoConfiguration）
+>
+> 6.2 创建容器
+7. 在这个启动流程中，会发布多个applicationEvent ；调用监听器 ApplicationContextInitializer 
+ [Spirng扩展点]: Spring扩展点.md
+
+## 自动装配原理
 
 ### 原理
 

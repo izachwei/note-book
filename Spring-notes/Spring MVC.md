@@ -1,6 +1,35 @@
-## Spring MVC
+# Spring MVC
+
+## Servlet容器的扩展机制
+
+```java
+/**
+	生命周期由 Servlet 容器管理
+	Servlet 3.0 特性，SPI 机制提供  ServletContainerInitializer 扩展点
+	
+*/
+SpringServletContainerInitializer implements ServletContainerInitializer
+    -> WebApplicationInitializer (用于自定义 提供扩展。SpringBoot web项目想要以 war 包方式部署需要用到这个机制、SpringBootServletInitializer)
+/**
+ 生命周期由Spring容器管理，Spring web容器(ServletWebServerApplicationContext)管理，
+*/
+ServletContextInitializer
+
+```
+
+![image-20221211135720576](imgs\serveltContextInitializer.png)
+
+```java
+public class TomcatStartSpringBoot extends SpringBootServletInitializer {
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(Application.class);
+    }
+}
+```
 
 ### 创建 ServletWebServerApplicationContext 
+
 * `AbstractApplicationContext.refresh() -> onRefresh() -> createWebServer() -> selfInitialize() 这里会读取 beanFactory 自动配置配类 `DispatcherServletAutoConfiguration` -> DispatcherServletRegistrationBean (底层实现接口`ServletContextInitializer`)-> 执行 onStartup() -> 导入DispacherServlet`
 * 在第一次访问到 Servlet 时，调用 init() -> 加载HandlerMapping、HandlerAdpter
 ```java

@@ -1,6 +1,6 @@
 # Spring 扩展点
 
-## ApplicationContextInitializer
+## ApplicationContextInitializer （SpringBoot ，添加在 spring.factories）
 
 这个类的主要目的就是在ConfigurableApplicationContext类型（或者子类型）的ApplicationContext做refresh之前，允许我们对ConfigurableApplicationContext的实例做进一步的设置或者处理。。
 
@@ -12,7 +12,7 @@ Spring 提供了满足条件注入Bean的能力，SpringBoot 预设常用的条�
 
 ## ApplicationListener （观察者模式）
 
-订阅Spring运行中发布事件，例如：ContextRefreshedEvent 
+订阅Spring运行中发布事件，例如：ApplicationStartingEvent、ApplicationEnvironmentPreparedEvent、ApplicationPreparedEvent 、ContextRefreshedEvent 、ApplicationStartedEvent  、ApplicationFailedEvent  
 ```java
 public class RequestHandlerRegistry implements ApplicationListener<ContextRefreshedEvent> {
   @Override
