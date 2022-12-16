@@ -9,7 +9,7 @@
 > 6.1 加载所有自动配置类 （@SpringBootApplication、@EableAutoConfiguration）
 >
 > 6.2 创建容器
-7. 在这个启动流程中，会发布多个applicationEvent ；调用监听器 ApplicationContextInitializer 
+7. 在这个启动流程中，会发布多个applicationEvent （ApplicationListener） ；调用监听器 ApplicationContextInitializer
 [Spirng扩展点](Spring扩展点.md)
 
 ## 自动装配原理
