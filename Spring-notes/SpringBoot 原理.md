@@ -41,4 +41,11 @@ SpringBoot不需要写配置文件的原因是，SpringBoot所有配置都是在
 
 2、@EnableAutoConfiguration会读取所有jar下META-INF/spring.factories文件的内容，获取”org.springframework.boot.autoconfigure.EnableAutoConfiguration“的配置，把这些配置注入到容器；
 
-3、@EnableAutoConfiguration注入的类是否生效，需要看其上面的注解，主要配合@ConditionaleXXX注解使用；
+3、`@EnableAutoConfiguration`注入的类是否生效，需要看其上面的注解，主要配合@ConditionalXXX注解使用；
+
+## SpringBoot 怎么集成 Tomcat 
+
+SpringBoot 启动过程中会创建 ServletWebServerContext ，一般使用注解方式启动，创建的是 AnotationServletWebServerContext （extends ServletWebServerContext） ，该对象下有个成员变量 webServer ，具体的实现类：`TomcatWebServer`
+
+TomcatWebServer 是 Spring 对原生 Tomcat 的包装类，其中就包含了 Tomcat 的功能。
+
