@@ -1,5 +1,7 @@
 ## ES 原理
 
+ES 全称 ElasticSearch ，是一个分布式搜索引擎 and NoSQL数据库
+
 ### 实现特点
 
 1. 存储数据有序存储
