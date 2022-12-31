@@ -1,5 +1,6 @@
 ## ES 原理
-
+ES全称ElasticSearch，是一个分布式搜索引擎，同时也是一个Nosql数据库，存放的数据格式类似JSON，跟MongoDB有些类似，
+MongoDB事务型应用层面适用于OLTP，ElasticSearch更偏向于OLAP，本身不支持事务。
 ### 实现特点
 
 1. 存储数据有序存储
