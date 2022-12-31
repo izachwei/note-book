@@ -27,3 +27,11 @@
 
 * 用于管理nacos，监控，展示Namespace、服务状况
 
+## Common 模块
+
+* NotifyCenter 通知中心
+* Cache ，CacheBuilder 可以构建：SimpleCache 、LruCache、SynchronizedCache、AutoExpireCache
+
+## Client 模块
+
+* Limiter 用于限流，底层使用 RateLimiter（guava工具包）

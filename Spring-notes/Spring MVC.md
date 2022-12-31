@@ -94,7 +94,7 @@ public RequestMappingHandlerMapping requestMappingHandlerMapping(
   ```java
   /**
       RequestMappingHandlerMapping extends AbstractHanlerMapping 
-      AbstractHanlerMapping implements InitializingBean
+      AbstractHandlerMethodMapping implements InitializingBean
       在 Bean 生命周期 afterPropertiesSet() 方法 注入 Controller 中的 Method
       重写 RequestMappingHandlerMapping 中的 isHandler 方法即可注入其他注解或者类型的Bean
   **/
