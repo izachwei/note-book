@@ -6,7 +6,7 @@
 2. 字典（dict）：ziplist、hash
 3. list：ziplist、双向链表
 4. set：整数集合（int[]）、hash
-5. zset：ziplist、调表表
+5. zset：ziplist、跳表
 
 ## 优缺点
 
