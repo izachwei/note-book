@@ -8,6 +8,10 @@
 4. set：整数集合（int[]）、hash
 5. zset：ziplist、跳表
 
+## 特性
+
+Redis 事务不支持原子性，持久性也需要 AOF 配置的支持，修改成 always
+
 ## 优缺点
 
 ### 优点
