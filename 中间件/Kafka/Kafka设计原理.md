@@ -14,11 +14,21 @@ Broker Set -> Controller ，创建 Zookeeper 节点，利用 Zookeeper 实现 Br
 
 消费者组加入
 
+## 相关名词
+
+### HW
+
+### LEO
+
+### LSO
+
+
+
 ## 如何保证消息不丢失？
 
-### 相关配置
+### Producer 相关配置
 
-acks
+**acks**
 
 默认 acks = all
 
@@ -30,7 +40,7 @@ ack = 1：表示分区 Leader 节点保存消息成功后返回。
 
 
 
-### in.insync.replicas
+**in.insync.replicas**
 
 Kafka ISR 列表中最小同步副本数
 
@@ -44,5 +54,57 @@ Kafka ISR 列表中最小同步副本数
 ```
 当生产者将确认设置为“all”（或“-1”）时，min.insync.replicas 指定必须确认写入的最小副本数才能被视为成功。如果无法满足此最小值，则生产者将引发异常（NotEnoughReplicas 或 NotEnoughReplicasAfterAppend）。
 当一起使用时，min.insync.replicas 和 acks 允许您强制执行更大的持久性保证。一个典型的场景是创建一个复制因子为 3 的主题，将 min.insync.replicas 设置为 2，并使用“all”的 acks 生成。如果大多数副本没有收到写入，这将确保生产者引发异常。
+```
+
+### 消费者相关配置
+
+**enable-auto-commit = false**
+
+**AckMode** 手动提交 **MANUAL和MANUAL_IMMEDIATE**
+
+MANUAL_IMMEDIATE是消费完一个消息就提交，MANUAL是处理完一批消息，在下一次拉取消息之前批量提交。拉取批量消息可以通过max.poll.record设置最大，默认是500条。前提是消息大小满足最大限制，否则一批也拉取不到最大的500条。
+
+| 模式             | 描述                                                         |
+| ---------------- | ------------------------------------------------------------ |
+| MANUAL           | poll()拉取一批消息，处理完业务后，手动调用Acknowledgment.acknowledge()先将offset存放到map本地缓存，在下一次poll之前从缓存拿出来批量提交 |
+| MANUAL_IMMEDIATE | 每处理完业务手动调用Acknowledgment.acknowledge()后立即提交   |
+| RECORD           | 当每一条记录被消费者监听器（ListenerConsumer）处理之后提交   |
+| BATCH            | 当每一批poll()的数据被消费者监听器（ListenerConsumer）处理之后提交 |
+| TIME             | 当每一批poll()的数据被消费者监听器（ListenerConsumer）处理之后，距离上次提交时间大于TIME时提交 |
+| COUNT            | 当每一批poll()的数据被消费者监听器（ListenerConsumer）处理之后，被处理record数量大于等于COUNT时提交 |
+| COUNT_TIME       | TIME或COUNT满足其中一个时提交                                |
+
+**auto.offset.reset**
+
+* none
+* earliest
+* latest
+
+	所有介绍的前提,同一个消费者组下
+
+none
+
+```
+如果没有为消费者找到先前的offset的值即没有自动维护偏移量,也没有手动维护偏移量,则抛出异常
+```
+
+earliest
+
+```
+在各分区下有提交的offset时：从offset处开始消费
+在各分区下无提交的offset时：从头开始消费
+```
+
+latest
+
+```
+在各分区下有提交的offset时：从offset处开始消费
+在各分区下无提交的offset时：从最新的数据开始消费
+```
+
+**isolation.level=read_committed**
+
+```
+READ_UNCOMMITTED((byte) 0), READ_COMMITTED((byte) 1);
 ```
 
