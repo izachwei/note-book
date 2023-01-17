@@ -70,3 +70,5 @@ The following flags are supported by selenoid command:
     Image to use as video recorder (default "selenoid/video-recorder:latest-release")
 ```
 
+## 创建GGR
+docker run -d --name ggr -p 8088:4444 -e TZ=America/Los_Angeles -v /etc/grid-router/:/etc/grid-router/akamai/:ro aerokube/ggr:1.5.4
