@@ -1,7 +1,7 @@
 ### 创建 Selenoid 容器
 
 ```bash
-docker run -d --name selenoid -p 8081:4444 -e TZ=America/Los_Angeles -v /var/run/docker.sock:/var/run/docker.sock -v /opt/selenoid/config/:/etc/selenoid/:ro -v /opt/selenoid/video/:/opt/selenoid/video/ -v /opt/selenoid/logs/:/opt/selenoid/logs/ --restart always a.newegg.org/newegg-docker/aerokube/selenoid:latest -conf /etc/selenoid/browsers.json -limit 20 -video-output-dir /opt/selenoid/video/ -service-startup-timeout 120s -session-attempt-timeout 120s -session-delete-timeout 300s -timeout 1000s -log-output-dir /opt/selenoid/logs/
+docker run -d --name selenoid -p 8081:4444 -e TZ=America/Los_Angeles -v /var/run/docker.sock:/var/run/docker.sock -v /opt/selenoid/config/:/etc/selenoid/:ro -v /opt/selenoid/video/:/opt/selenoid/video/ -v /opt/selenoid/logs/:/opt/selenoid/logs/ --restart always selenoid:latest -conf /etc/selenoid/browsers.json -limit 20 -video-output-dir /opt/selenoid/video/ -service-startup-timeout 120s -session-attempt-timeout 120s -session-delete-timeout 300s -timeout 1000s -log-output-dir /opt/selenoid/logs/
 ```
 
 ### 创建 Selenoid_UI 容器
