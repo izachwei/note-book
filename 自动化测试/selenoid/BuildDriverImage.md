@@ -123,7 +123,5 @@ RUN mkdir -p /home/selenium/.pki/nssdb  \
         && certutil -d sql:/home/selenium/.pki/nssdb -A -t "CT,c,c" -n neweggintrg2 -i /usr/local/share/ca-certificates/NeweggintranetG2.crt  \
         && certutil -d sql:/home/selenium/.pki/nssdb -A -t "P,," -n neweggqa -i /usr/local/share/ca-certificates/neweggqa.crt  \
         && certutil -d sql:/home/selenium/.pki/nssdb -A -t "P,," -n neweggldev -i /usr/local/share/ca-certificates/neweggldev.crt
-LABEL maintainer=Ken.L.Ma
-
 ```
 
