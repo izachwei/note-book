@@ -26,3 +26,9 @@
 CustomEnvironmentPluginManager 字段 SERVICE_LIST SPI  加载自定义环境 CustomEnvironmentPluginService
 
 ### 默认无实现
+
+
+
+## 限流插件- Control-Plugin
+
+继承实现 ConnectionControlManager 完成Nacos应用的限流策略
