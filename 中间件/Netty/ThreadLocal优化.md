@@ -19,8 +19,9 @@ FastThreadLocal 初始化时获取一个定值的Index
 #### 高效查找
 
 ```java
-FastThradLocal 
+FastThreadLocal 
     Object[]
+        // 0位置 -> private static final int variablesToRemoveIndex = InternalThreadLocalMap.nextVariableIndex(); (静态变量在类加载时初始化，值一定是0)
     	Object[0] == Set<FastThreadLocal<?>> (addToVariablesToRemove) // 方便清除
 ```
 
