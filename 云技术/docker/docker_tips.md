@@ -7,3 +7,7 @@
 ### 查询日志
 
 ` docker logs --since="2021-10-07T23:35:00Z" --until="2021-10-07T23:36:00Z"`
+
+#### 查询最近日志（指定多少行）
+
+`docker logs -f -t --tail=100 xxx`

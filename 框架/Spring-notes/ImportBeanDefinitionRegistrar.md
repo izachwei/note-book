@@ -4,7 +4,7 @@
 
 一般配合 @Import 使用，用于在 Spring 启动时创建 BeanDefinition 并导入 BeanDefinition
 
-案例：
+#### 主流框架使用案例：
 
 - Mybatis   @MapperScan 导入 MapperScannerConfigurer  用于 (ClassPathMapperScanner) 扫描 @Mapper 利用  (BeanDefinitionRegistryPostProcesso) 生成 Mapper接口代理类 (MapperFactoryBean )]
 

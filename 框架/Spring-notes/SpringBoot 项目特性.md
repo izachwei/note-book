@@ -1,7 +1,7 @@
 ##### SpringBoot 项目特性
 ###### springboot打包排除掉resources下的html,css,js,jpg图片等资源文件
 * POM 文件修改 `<resources>...</resources>` 配置
-* ```
+```
 <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -21,15 +21,17 @@
 
 ###### SpringBoot 项目创建非Web项目
 * 是可以的，在Idea中new project 可以选择其他类型的项目
-###### SpringBoot 禁用某个装配功能
-####### 数据源，邮件，这些都是提供了自动配置的，我们需要排除Spring Boot的自动化配置，交给我们自己来自定义，该如何做呢?
+##### SpringBoot 禁用某个装配功能
+###### 数据源，邮件，这些都是提供了自动配置的，我们需要排除Spring Boot的自动化配置，交给我们自己来自定义，该如何做呢?
 * 使用@SpringBootApplication注解的时候，使用exclude 属性进行排除指定的类。
+
 ```java
 @springBootApplication(exclude = {DataSourceAutoConfiguration.class,MaillSenderAutoConfiguration.class})
 public class Application {
 
 }
 ```
+
 * 单独使用@EnableAutoconfiguration注解的时候。
 ```java
 @EnableAutoConfiguration( exclude = { DataSourceAutoConfiguration.class,MaillSenderAutoConfiguration.class})
