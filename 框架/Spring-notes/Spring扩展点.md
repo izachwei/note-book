@@ -21,3 +21,8 @@ public class RequestHandlerRegistry implements ApplicationListener<ContextRefres
     }
     }
 ```
+
+
+## SpringApplicationRunListener（SpringBoot）
+
+SpringBoot 启动过程中各个阶段的监听点。环境准备，上下文准备，容器刷新时监听方法
