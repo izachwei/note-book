@@ -31,6 +31,24 @@
 
 ### 利用raft算法选举领头sentinel
 
+ Raft协议描述的节点共有三种状态:Leader, Follower, Candidate
+
+```
+ 选举流程: 
+ 1. Raft采用心跳机制触发Leader选举系统启动后，全部节点初始化为Follower，term为0
+
+ 2. 节点如果收到了RequestVote或者AppendEntries，就会保持自己的Follower身份
+
+ 3. 节点如果一段时间内没收到AppendEntries消息，在该节点的超时时间内还没发现Leader，Follower就会转换成Candidate，自己开始竞选Leader。 一旦转化为Candidate，该节点立即开始下面几件事情: --增加自己的term，启动一个新的定时器 --给自己投一票，向所有其他节点发送RequestVote，并等待其他节点的回复。
+
+ 4. 如果在计时器超时前，节点收到多数节点的同意投票，就转换成Leader。同时通过 AppendEntries，向其他节点发送通知。
+
+ 5. 每个节点在一个term内只能投一票，采取先到先得的策略，Candidate投自己， Follower会投给第一个收到RequestVote的节点。
+ 6. Raft协议的定时器采取随机超时时间（选举的关键），先转为Candidate的节点会先发起投票，从而获得多数票。
+```
+
+
+
 * 在判定 Master 下线之后，需要进行故障转移选举出新的Master，需要选举出哪个 Sentinel 来执行该操作，选举过程：
 
 > 1. 判定 Master 下线的 Sentinel1 ，在将 Master 标记为客观下线之后，会其他Sentinel 发送消息，推举自己成为领头。

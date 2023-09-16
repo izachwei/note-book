@@ -8,7 +8,7 @@
 
 ### Spring
 
-1. @EnableApolloConfig -> @Import(ApolloConfigRegistrar.class) -> 导入 PropertySourcesProcessor implements `BeanFactoryPostProcessor` ->  postProcessBeanFactory() 读取远程配置参数，刷新Environment配置信息
+1. @EnableApolloConfig -> @Import(@Import.class) -> 导入 PropertySourcesProcessor implements `BeanFactoryPostProcessor` ->  postProcessBeanFactory() 读取远程配置参数，刷新Environment配置信息
 
 2. ApolloAutoConfiguration -> "apollo.bootstrap.enabled" : true -> 导入 ConfigPropertySourcesProcessor implements `BeanFactoryPostProcessor`
 

@@ -37,7 +37,7 @@ public class MyAgent {
 
 ##### 定义 `MANIFEST.MF`，放在 resource/ META-INF/
 
-<img src="../imgs/manifest.png" />
+<img src="./manifest.png" />
 
 ```properties
 Manifest-Version: 1.0
@@ -82,7 +82,7 @@ Can-Set-Native-Method-Prefix: true
 * 该方法就不是使用  -javaagent 参数引入，需要使用 virtualMachine 下的 attche 方法引入，该类不是 jdk 官方提供，又sun公司提供，需要引入依赖
 
 ```java
-public class Attacher {
+·public class Attacher {
 
     public static void main(String[] args)
         throws IOException, AttachNotSupportedException, AgentLoadException, AgentInitializationException {
