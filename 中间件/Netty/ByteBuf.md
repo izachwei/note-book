@@ -1,4 +1,4 @@
-## ByteBuffer
+## ByteBuf
 
 ```
 PooledByteBufAllocator.buffer ->  AbstractByteBufAllocator.directBuffer 
