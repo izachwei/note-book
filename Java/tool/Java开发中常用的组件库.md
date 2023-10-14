@@ -35,3 +35,8 @@
 </dependency>
 ```
 
+4. JCTools 也是一个开源项目，Github 地址为 https://github.com/JCTools/JCTools。JCTools 是适用于 JVM 并发开发的工具，主要提供了一些 JDK 确实的并发数据结构，例如非阻塞 Map、非阻塞 Queue 等。其中非阻塞队列可以分为四种类型，可以根据不同的场景选择使用。
+> - Spsc 单生产者单消费者；
+> - Mpsc 多生产者单消费者；
+> - Spmc 单生产者多消费者；
+> - Mpmc 多生产者多消费者。
