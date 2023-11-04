@@ -12,3 +12,12 @@ PooledByteBufAllocator.buffer ->  AbstractByteBufAllocator.directBuffer
 
 
 
+## jemalloc 架构
+
+Netty 底层采用 Jemalloc 分配内存。
+
+备注：
+
+Redis 底层内存分配模式也采用 Jemallo。
+
+我们拿到一个Redis Key Value 利用 Jemallo 内存分配算法能够算出该key/value在 redis 真实占用的内存大小。
