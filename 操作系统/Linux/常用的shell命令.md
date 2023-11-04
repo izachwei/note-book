@@ -1,6 +1,6 @@
 ## 常用的shell命令
 
-`if [ $? ``-eq` `0 ]` 一个命令执行后的退出状态
+### `if [ $? ``-eq` `0 ]` 一个命令执行后的退出状态
 
 用于判断上一次命令是否执行成功
 
@@ -14,4 +14,19 @@ $$:　　代表所在命令的PID
 $!:　　 代表最后执行的后台命令的PID
 $?:　　代表上一个命令执行后的退出状态
 ```
+
+### 通过 curl 查看网站连接时间
+
+```
+curl -L -w "time_namelookup: %{time_namelookup}
+time_connect: %{time_connect}
+time_appconnect: %{time_appconnect}
+time_pretransfer: %{time_pretransfer}
+time_redirect: %{time_redirect}
+time_starttransfer: %{time_starttransfer}
+time_total: %{time_total}
+" https://example.com/
+```
+
+
 
