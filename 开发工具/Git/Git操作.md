@@ -5,3 +5,8 @@
 
 #### 修改 commit 信息
 * ` git commit --amend`
+
+### 回滚某次提交 
+
+`git reset --hard 版本号`
+
