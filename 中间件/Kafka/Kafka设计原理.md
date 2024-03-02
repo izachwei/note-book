@@ -10,6 +10,14 @@ Broker Set -> Controller ，创建 Zookeeper 节点，利用 Zookeeper 实现 Br
 * 分区 ISR 集合发生变化，同步变化信息到其他 broker 节点
 * 当使用kafka-topics.sh脚本为某个topic增加分区数量时，同样还是由控制器负责让新分区被其他节点感知到
 
+### producer 写入消息序列图
+如下所示：https://www.cnblogs.com/xifenglou/p/7251112.html
+1. producer 先从 zookeeper 的 "/brokers/.../state" 节点找到该 partition 的 leader
+2. producer 将消息发送给该 leader
+3. leader 将消息写入本地 log
+4. followers 从 leader pull 消息，写入本地 log 后 leader 发送 ACK
+5. leader 收到所有 ISR 中的 replica 的 ACK 后，增加 HW（high watermark，最后 commit 的 offset） 并向 producer 发送 ACK
+
 ## GroupCoordinator（组协调器）
 
 消费者组加入
