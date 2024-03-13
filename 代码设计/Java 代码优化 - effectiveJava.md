@@ -43,6 +43,15 @@ public class LaunchInfoFactory {
 }
 ```
 
+#### 泛型优化
+
+生产者使用 extends，消费者使用 super（PECS），所有的 comparable 和 comparator 都是消费者。
+
+#### Lambda 表达式
+
+**lambda 表达式缺少名称和文档；如果一个算法并非不言自明，或者有很多行代码，不要把它放在 lambda 表达式中。** 一行是理想的，三行是合理的最大值
+
+
 
 
 
