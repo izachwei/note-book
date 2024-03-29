@@ -10,3 +10,20 @@
 
 `git reset --hard 版本号`
 
+###  git 多户配置
+```
+[user]
+    name = Garrit Franke
+    email = garrit@slashdev.space
+
+[includeIf "gitdir:~/work/"]
+    path = ~/.gitconfig-work
+
+[includeIf "gitdir:~/work/client2/"]
+    path = ~/.gitconfig-client2
+
+[includeIf "gitdir:~/sources/"]
+    path = ~/.gitconfig-personal
+
+# ...
+```
