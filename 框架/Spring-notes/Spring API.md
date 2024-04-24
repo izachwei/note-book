@@ -23,7 +23,7 @@
 >* afterSingletonsInstantiated // 在容器非`Lazy`的`Singleton`都已被初始化完成后执行
 * `AsyncAnnotationBeanPostProcessor` (extends `AdviceModeImportSelector`) 
 
-  > @Async -> @import -> AsyncConfigurationSelector ->  ProxyAsyncConfiguration -> @Bean -> `AsyncAnnotationBeanPostProcessor` 
+  > @EnableAsync -> @import -> AsyncConfigurationSelector ->  ProxyAsyncConfiguration -> @Bean -> `AsyncAnnotationBeanPostProcessor` 
 
 * `ProxyTransactionManagementConfiguration` (extends `AdviceModeImportSelector`) -> @Transcation
 >> * `@Transcation` 声明式事务依赖 AOP, 核心原理是通过 @EnableTransactionManagement-> import(`TransactionManagementConfigurationSelector`->)`ProxyTransactionManagementConfiguration` -> 注入声明式事务的advisor BeanFactoryTransactionAttributeSourceAdvisor -> 通过advisor aop 完成事务的添加 `BeanFactoryTransactionAttributeSourceAdvisor` 
