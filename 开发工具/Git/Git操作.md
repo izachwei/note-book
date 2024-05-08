@@ -27,3 +27,11 @@
 
 # ...
 ```
+
+### 重命名分支
+##### 重命名本地分支
+`git branch -m oldName newName`
+##### 删除远程分支
+`git branch --delete origin oldName`
+##### 将新分支推送到远程
+` git push --set-upstream origin newName`
