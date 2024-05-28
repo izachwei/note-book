@@ -35,3 +35,8 @@
 `git branch --delete origin oldName`
 3. 将新分支推送到远程
 ` git push --set-upstream origin newName`
+
+### 撤回最近commit
+```bash
+git reset --soft HEAD^
+```
